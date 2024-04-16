@@ -94,7 +94,7 @@ Please visit our partner website on Dagora NFT marketplace to get our NFT - LINK
       id: "1713274503338",
     },
     {
-      type: "Telegram",
+      type: "telegram",
       title: "Join telegram",
       id: "1711274503538",
     },
