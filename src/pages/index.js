@@ -8,8 +8,10 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
   useEffect(() => {
     // Trigger the Telegram Login Widget
-    if (typeof window !== "undefined") {
-      window.TelegramLoginWidget("telegram-login-button", {
+    window.addEventListener("DOMContentLoaded", () => {
+      // Trigger the Telegram Login Widget
+      console.log("window", window);
+      window?.TelegramLoginWidget("telegram-login-button", {
         bot_id: "Tsnake_fun_bot", // Your bot's username
         size: "large", // Size of the button (small, medium, large)
         corner_radius: 10, // Border radius of the button
@@ -19,7 +21,7 @@ export default function Home() {
         },
         request_access: "write", // Access requested from the user (read, write)
       });
-    }
+    });
   }, []);
   return (
     <main
