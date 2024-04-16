@@ -6,23 +6,6 @@ import { useEffect } from "react";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-  useEffect(() => {
-    // Trigger the Telegram Login Widget
-    window.addEventListener("DOMContentLoaded", () => {
-      // Trigger the Telegram Login Widget
-      console.log("window", window);
-      window?.TelegramLoginWidget("telegram-login-button", {
-        bot_id: "Tsnake_fun_bot", // Your bot's username
-        size: "large", // Size of the button (small, medium, large)
-        corner_radius: 10, // Border radius of the button
-        onAuth: function (user) {
-          // Callback function to handle authentication
-          console.log(user);
-        },
-        request_access: "write", // Access requested from the user (read, write)
-      });
-    });
-  }, []);
   return (
     <main
       className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
