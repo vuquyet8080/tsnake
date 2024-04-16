@@ -1,21 +1,12 @@
 import { Html, Head, Main, NextScript } from "next/document";
+import { ThemeModeScript } from "flowbite-react";
 
-function onTelegramAuth(user) {
-  alert(
-    "Logged in as " +
-      user.first_name +
-      " " +
-      user.last_name +
-      " (" +
-      user.id +
-      (user.username ? ", @" + user.username : "") +
-      ")"
-  );
-}
 export default function Document() {
   return (
     <Html lang="en">
       <Head>
+        <ThemeModeScript />
+
         <script
           async
           src="https://telegram.org/js/telegram-widget.js?22"
@@ -34,7 +25,7 @@ export default function Document() {
                 " (" +
                 user.id +
                 (user.username ? ", @" + user.username : "") +
-                ")"
+                ")",
             );
           }}
         </script>
