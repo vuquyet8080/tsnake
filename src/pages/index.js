@@ -27,6 +27,16 @@ export default function Home() {
     <main
       className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
     >
+      <script
+        async
+        src="https://telegram.org/js/telegram-widget.js?22"
+        data-telegram-login="Tsnake_fun_bot"
+        data-size="large"
+        data-userpic="false"
+        data-onauth="onTelegramAuth(user)"
+        data-request-access="write"
+        data-auth-url="/api/auth/telegram/callback"
+      ></script>
       <button
         className="telegram-login-button"
         data-telegram-login="Tsnake_fun_bot"
