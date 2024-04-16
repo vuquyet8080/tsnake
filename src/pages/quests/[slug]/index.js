@@ -8,8 +8,8 @@ import React from "react";
 export default function index() {
   return (
     <div className="py-8">
-      <div className="flex flex-row items-center justify-between gap-x-8">
-        <div className="text-2xl font-semibold">
+      <div className="flex flex-row items-center justify-between w-full ">
+        <div className="text-lg font-semibold md:text-xl lg:text-2xl ">
           {mockDataQuest.title || ""}
         </div>
 
