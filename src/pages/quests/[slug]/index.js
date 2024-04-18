@@ -1,54 +1,32 @@
 "use client";
 import CarouselList from "@/components/CarouselList";
-import { Popover, Button } from "flowbite-react";
-import Image from "next/image";
 
-import React from "react";
+import { ClipboardDefault } from "@/components/ClipboardDefault";
+import TaskQuests from "@/components/quests/taskQuests";
 
 export default function index() {
   return (
     <div className="py-8">
-      <div className="flex flex-row items-center justify-between w-full ">
+      <div className="flex w-full flex-row items-center justify-between ">
         <div className="text-lg font-semibold md:text-xl lg:text-2xl ">
           {mockDataQuest.title || ""}
         </div>
 
-        <Button color={"dark"} className="min-w-fit">
-          <div className="relative w-5 h-5">
-            <Image
-              src={"/images/copy-link.svg"}
-              layout="fill"
-              objectFit="cover"
-              objectPosition="center"
-            />
-          </div>
-          <div className="ml-2 font-semibold">Copy link</div>
-        </Button>
+        <ClipboardDefault />
       </div>
-      <div className="flex flex-col pt-6 gap-y-4">
+      <div className="flex flex-col gap-y-4 pt-6">
         {mockDataQuest?.tasks?.map((quest) => {
-          return (
-            <button
-              type="button"
-              key={quest.id}
-              className="flex flex-row items-center px-4 py-2 border border-gray-300 rounded-md shadow-md active:bg-gray-50 gap-x-2 hover:cursor-pointer"
-            >
-              <div className="relative w-6 h-6">
-                <Image
-                  src={`/images/${quest.type}.svg`}
-                  layout="fill"
-                  objectFit="cover"
-                  objectPosition="center"
-                />
-              </div>
-              <div className="font-semibold">Follow @_MetaEarth_ on X</div>
-            </button>
-          );
+          return <TaskQuests quest={quest} key={quest.id} />;
         })}
       </div>
       <div className="pt-12">
         <div className="text-2xl font-semibold">Description</div>
-        <div className="pt-3 text-base">{mockDataQuest.description || ""}</div>
+
+        <div className="pt-2">
+          <p class="block font-sans text-base font-light leading-relaxed text-inherit antialiased">
+            {mockDataQuest.description || ""}
+          </p>
+        </div>
       </div>
       <div className="pt-10">
         <CarouselList />
@@ -85,18 +63,37 @@ Please visit our partner website on Dagora NFT marketplace to get our NFT - LINK
   tasks: [
     {
       type: "twitter",
-      title: "Join twitter server",
+      title: "Follow @_MetaEarth_ on X",
       id: "1713274503538",
+      targetActionId: "macarondex",
+      action: "follow",
+    },
+    {
+      type: "twitter",
+      title: "Like a Post by @/_MetaEarth_ on X",
+      id: "1713274503538",
+      targetActionId: "1764599241077346714",
+      action: "like",
+    },
+    {
+      type: "twitter",
+      title: "Post on X and tag 3 friends on X",
+
+      targetActionId: `https://twitter.com/intent/post?text=https%3A%2F%2Fx.com%2F_MetaEarth_%2Fstatus%2F1764599241077346714%3Fs%3D20%0A%0A%23Modular%20Meta%20Earth%20Network%20with%20native%20%23DID%20is%20coming%2C%20LFG%20%23Coldstart2024%0A%0A%23MetaEarth%20%23Modular%20%23Coldstart2024`,
+      id: "1713274503538",
+      action: "post&tag",
     },
     {
       type: "facebook",
-      title: "Join facebook server",
+      title: "Like a Post by @/_MetaEarth_ on FACEBOOK",
       id: "1713274503338",
+      action: "like",
     },
     {
       type: "telegram",
-      title: "Join telegram",
+      title: "Like a Post by @/_MetaEarth_ on TELEGRAM",
       id: "1711274503538",
+      action: "like",
     },
   ],
 };
