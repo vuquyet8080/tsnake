@@ -3,5 +3,6 @@ export const ACTION = {
     follow: "follow",
     like: "like",
     "post&tag": "post&tag",
+    retweet: "retweet",
   },
 };

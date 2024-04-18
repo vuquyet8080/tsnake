@@ -84,6 +84,13 @@ Please visit our partner website on Dagora NFT marketplace to get our NFT - LINK
       action: "post&tag",
     },
     {
+      type: "twitter",
+      title: "Retweet a post  by @/_MetaEarth_ on X",
+      id: "1713274503538",
+      targetActionId: "1764599241077346714",
+      action: "retweet",
+    },
+    {
       type: "facebook",
       title: "Like a Post by @/_MetaEarth_ on FACEBOOK",
       id: "1713274503338",
