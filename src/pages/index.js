@@ -54,11 +54,14 @@ export default function Home() {
         </Button>
         <div>
           <script type="text/javascript">{`function onTelegramAuth(user) {console.log(user)}`}</script>
+
           <script
             async
             src="https://telegram.org/js/telegram-widget.js?22"
             data-telegram-login="Tsnake_fun_bot"
             data-size="large"
+            data-userpic="false"
+            data-radius="4"
             data-onauth="onTelegramAuth(user)"
             data-request-access="write"
           ></script>
