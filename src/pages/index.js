@@ -53,23 +53,8 @@ export default function Home() {
           Login new tab
         </Button>
         <div>
+          <script type="text/javascript">{`function onTelegramAuth(user) {alert("Logged in as " + user.first_name +" " +user.last_name +" (" +user.id +(user.username ? ", @" + user.username : "") +")");}`}</script>
           <script
-            id="1"
-            type="text/javascript"
-          >{`function onTelegramAuth(user) {
-              alert(
-                "Logged in as " +
-                  user.first_name +
-                  " " +
-                  user.last_name +
-                  " (" +
-                  user.id +
-                  (user.username ? ", @" + user.username : "") +
-                  ")",
-              );
-            }`}</script>
-          <script
-            id="2"
             async
             src="https://telegram.org/js/telegram-widget.js?22"
             data-telegram-login="Tsnake_fun_bot"
