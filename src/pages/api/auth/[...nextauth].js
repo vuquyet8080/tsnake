@@ -6,8 +6,9 @@ export const authOptions = {
 
   providers: [
     TwitterProviders({
-      clientId: "Mzs3FFTqhaBD5Peem5m627uvk",
-      clientSecret: "u0w4cwgY0gm0rtaN9UGIDzjYf7tW7PJ6BC5wCoyO8xfO3z0OFG",
+      // from Consumer Keys
+      clientId: "kGRf2bwqTfpUDSx6bExHRuTz4",
+      clientSecret: "zVumVPn3t7TNkZjvOFUv1Txc1DjtQLN01lYkZiHsdtEWSMd0XQ",
     }),
   ],
 };
@@ -17,6 +18,8 @@ export default NextAuth({
   secret: process.env.PUBLIC_SECRET,
   callbacks: {
     async signIn({ user, account, profile, email, credentials }) {
+      console.log("profile", profile);
+      console.log("account", account);
       if (account.provider === "twitter" && user) {
         account.user = user;
         account.profile = profile;
@@ -32,6 +35,7 @@ export default NextAuth({
     //   return baseUrl;
     // },
     async jwt({ token, account, user }) {
+      console.log("user", user);
       if (account) {
         if (account.provider === "twitter") {
           token.twitterData = account;
