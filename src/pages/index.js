@@ -57,8 +57,17 @@ export default function Home() {
             id="1"
             type="text/javascript"
           >{`function onTelegramAuth(user) {
-    alert('Logged in as ' + user.first_name + ' ' + user.last_name + ' (' + user.id + (user.username ? ', @' + user.username : '') + ')');
-  }`}</script>
+              alert(
+                "Logged in as " +
+                  user.first_name +
+                  " " +
+                  user.last_name +
+                  " (" +
+                  user.id +
+                  (user.username ? ", @" + user.username : "") +
+                  ")",
+              );
+            }`}</script>
           <script
             id="2"
             async
