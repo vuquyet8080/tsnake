@@ -1,3 +1,4 @@
+"use client";
 import { Button } from "@material-tailwind/react";
 import Image from "next/image";
 import React from "react";
@@ -13,7 +14,6 @@ export default function TaskButton({
       size="sm"
       {...props}
       onClick={() => {
-        console.log("1");
         onClick();
       }}
     >
@@ -25,6 +25,7 @@ export default function TaskButton({
               layout="fill"
               objectFit="cover"
               objectPosition="center"
+              alt="button"
             />
           </div>
         )}

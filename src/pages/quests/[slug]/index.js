@@ -64,14 +64,14 @@ Please visit our partner website on Dagora NFT marketplace to get our NFT - LINK
     {
       type: "twitter",
       title: "Follow @_MetaEarth_ on X",
-      id: "1713274503538",
+      id: "171327450sd3338",
       targetActionId: "macarondex",
       action: "follow",
     },
     {
       type: "twitter",
       title: "Like a Post by @/_MetaEarth_ on X",
-      id: "1713274503538",
+      id: "171274503538",
       targetActionId: "1764599241077346714",
       action: "like",
     },
@@ -80,13 +80,13 @@ Please visit our partner website on Dagora NFT marketplace to get our NFT - LINK
       title: "Post on X and tag 3 friends on X",
 
       targetActionId: `https://twitter.com/intent/post?text=https%3A%2F%2Fx.com%2F_MetaEarth_%2Fstatus%2F1764599241077346714%3Fs%3D20%0A%0A%23Modular%20Meta%20Earth%20Network%20with%20native%20%23DID%20is%20coming%2C%20LFG%20%23Coldstart2024%0A%0A%23MetaEarth%20%23Modular%20%23Coldstart2024`,
-      id: "1713274503538",
+      id: "171327450538",
       action: "post&tag",
     },
     {
       type: "twitter",
       title: "Retweet a post  by @/_MetaEarth_ on X",
-      id: "1713274503538",
+      id: "17274503538",
       targetActionId: "1764599241077346714",
       action: "retweet",
     },

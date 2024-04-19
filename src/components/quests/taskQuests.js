@@ -1,14 +1,13 @@
 "use client";
+import { onActionButton } from "@/helper/actionButton";
 import {
   Accordion,
   AccordionBody,
   AccordionHeader,
-  Button,
 } from "@material-tailwind/react";
 import Image from "next/image";
 import React from "react";
 import TaskButton from "../button/TaskButton";
-import { onActionButton } from "@/helper/actionButton";
 
 export default function TaskQuests({ quest }) {
   const [openAcc1, setOpenAcc1] = React.useState(true);
@@ -27,6 +26,7 @@ export default function TaskQuests({ quest }) {
               layout="fill"
               objectFit="cover"
               objectPosition="center"
+              alt={quest.type}
             />
           </div>
           <div className="text-sm font-semibold">{quest?.title || ""}</div>
