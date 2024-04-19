@@ -22,16 +22,16 @@ export default function Home() {
 
   console.log(" data: session", session?.token);
   const telegramWrapperRef = useRef(null);
-  // useEffect(() => {
-  //   const scriptElement = document.createElement("script");
-  //   scriptElement.src = "https://telegram.org/js/telegram-widget.js?22";
-  //   scriptElement.setAttribute("data-telegram-login", "Tsnake_fun_bot");
-  //   scriptElement.setAttribute("data-size", "large");
-  //   scriptElement.setAttribute("data-auth-url", "http://localhost:3000");
-  //   scriptElement.async = true;
+  useEffect(() => {
+    const scriptElement = document.createElement("script");
+    scriptElement.src = "https://telegram.org/js/telegram-widget.js?22";
+    scriptElement.setAttribute("data-telegram-login", "Tsnake_fun_bot");
+    scriptElement.setAttribute("data-size", "large");
+    scriptElement.setAttribute("data-onauth", "onTelegramAuth(user)");
+    scriptElement.async = true;
 
-  //   telegramWrapperRef.current.appendChild(scriptElement);
-  // }, []);
+    telegramWrapperRef.current.appendChild(scriptElement);
+  }, []);
   return (
     <main
       className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
@@ -69,7 +69,7 @@ export default function Home() {
             data-request-access="write"
           ></Script>
         </div>
-        {/* <div ref={telegramWrapperRef} id="telegramWrapperRef"></div> */}
+        <div ref={telegramWrapperRef} id="telegramWrapperRef"></div>
       </div>
     </main>
   );
