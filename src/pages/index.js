@@ -1,4 +1,6 @@
-import { getProviders, signIn } from "next-auth/react";
+import { popupCenter } from "@/helper/popupCenter";
+import { Button } from "@material-tailwind/react";
+import { getProviders, signIn, signOut, useSession } from "next-auth/react";
 import { Inter } from "next/font/google";
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -6,6 +8,8 @@ import { useEffect, useState } from "react";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  const { data: session, status } = useSession();
+
   const [listProviders, setProviders] = useState([]);
   const fetchProviders = async () => {
     const providers = await getProviders();
@@ -22,6 +26,8 @@ export default function Home() {
     );
   };
 
+  console.log(" data: session", session?.token);
+
   return (
     <main
       className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
@@ -34,13 +40,21 @@ export default function Home() {
           Get started by editing&nbsp;
           <code className="font-mono font-bold">src/pages/index.js</code>
         </p>
+        <Button onClick={signOut}>sign out</Button>
         {Object.values(listProviders).map((provider) => (
           <div key={provider.name}>
-            <button onClick={() => signIn(provider.id)}>
+            <Button onClick={() => signIn(provider.id, {})}>
               Sign in with {provider.name}
-            </button>
+            </Button>
           </div>
         ))}
+        <Button
+          onClick={() => {
+            popupCenter("/login/twitter", "Sample Sign In");
+          }}
+        >
+          Login new tab
+        </Button>
         <div className="fixed bottom-0 left-0 flex items-end justify-center w-full h-48 bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
           <a
             className="flex gap-2 p-8 pointer-events-none place-items-center lg:pointer-events-auto lg:p-0"

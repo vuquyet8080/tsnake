@@ -1,8 +1,14 @@
 import { ACTION } from "@/constants/action";
+import { isEmpty } from "lodash";
+import { popupCenter } from "./popupCenter";
 
-export const onActionButton = async ({ type, action, data }) => {
-  console.log("type, action, data", type, action, data);
+export const onActionButton = async ({ type, action, data, auth }) => {
+  if (isEmpty(auth) && type === "twitter") {
+    return popupCenter("/login/twitter", "Sample Sign In");
+  }
+
   if (type === "twitter" && action === ACTION.twitter.follow) {
+    // provider;
     return window.open(
       `https://twitter.com/intent/follow?screen_name=${data?.targetActionId}`,
       // "twitter",
@@ -27,5 +33,11 @@ export const onActionButton = async ({ type, action, data }) => {
     );
   }
   if (type === "twitter" && action === ACTION.twitter.retweet) {
+  }
+};
+
+export const onActionAuthButton = async ({ type, auth }) => {
+  if (isEmpty(auth) && type === "twitter") {
+    return popupCenter("/login/twitter", "Sample Sign In");
   }
 };

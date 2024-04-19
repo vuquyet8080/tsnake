@@ -1,21 +1,14 @@
 import NextAuth from "next-auth";
-import GithubProvider from "next-auth/providers/github";
 import TwitterProviders from "next-auth/providers/twitter";
 
 export const authOptions = {
   // Configure one or more authentication providers
 
   providers: [
-    // GithubProvider({
-    //   clientId: process.env.GITHUB_ID,
-    //   clientSecret: process.env.GITHUB_SECRET,
-    // }),
     TwitterProviders({
-      clientId: process.env.TWITTER_CLIENT_TOKEN,
-      clientSecret: process.env.TWITTER_CLIENT_TOKEN_SECRET,
+      clientId: "Mzs3FFTqhaBD5Peem5m627uvk",
+      clientSecret: "u0w4cwgY0gm0rtaN9UGIDzjYf7tW7PJ6BC5wCoyO8xfO3z0OFG",
     }),
-
-    // ...add more providers here
   ],
 };
 
@@ -24,23 +17,32 @@ export default NextAuth({
   secret: process.env.PUBLIC_SECRET,
   callbacks: {
     async signIn({ user, account, profile, email, credentials }) {
-      console.log(
-        " user, account, profile, email, credentials ",
-        user,
-        account,
-        profile,
-        email,
-        credentials,
-      );
-      const isAllowedToSignIn = true;
-      if (isAllowedToSignIn) {
+      if (account.provider === "twitter" && user) {
+        account.user = user;
+        account.profile = profile;
+        account.user = user;
+        account.email = email;
+        account.credentials = credentials;
+
         return true;
-      } else {
-        // Return false to display a default error message
-        return false;
-        // Or you can return a URL to redirect to:
-        // return '/unauthorized'
       }
+    },
+    // async redirect({ url, baseUrl }) {
+    //   console.log(" url, baseUrl", url, baseUrl);
+    //   return baseUrl;
+    // },
+    async jwt({ token, account, user }) {
+      if (account) {
+        if (account.provider === "twitter") {
+          token.twitterData = account;
+          token.provider = account.provider;
+        }
+      }
+
+      return token;
+    },
+    async session({ session, token }) {
+      return { session, token };
     },
   },
 });
