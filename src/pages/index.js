@@ -3,6 +3,7 @@ import { Button } from "@material-tailwind/react";
 import { getProviders, signIn, signOut, useSession } from "next-auth/react";
 import { Inter } from "next/font/google";
 import Image from "next/image";
+import Script from "next/script";
 import { useEffect, useRef, useState } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -20,7 +21,7 @@ export default function Home() {
   }, []);
 
   console.log(" data: session", session?.token);
-  // const telegramWrapperRef = useRef(null);
+  const telegramWrapperRef = useRef(null);
   // useEffect(() => {
   //   const scriptElement = document.createElement("script");
   //   scriptElement.src = "https://telegram.org/js/telegram-widget.js?22";
@@ -52,29 +53,23 @@ export default function Home() {
           Login new tab
         </Button>
         <div>
-          <script type="text/javascript">
-            {function onTelegramAuth(user) {
-              alert(
-                "Logged in as " +
-                  user.first_name +
-                  " " +
-                  user.last_name +
-                  " (" +
-                  user.id +
-                  (user.username ? ", @" + user.username : "") +
-                  ")",
-              );
-            }}
-          </script>
-          <script
+          <Script
+            id="1"
+            type="text/javascript"
+          >{`function onTelegramAuth(user) {
+    alert('Logged in as ' + user.first_name + ' ' + user.last_name + ' (' + user.id + (user.username ? ', @' + user.username : '') + ')');
+  }`}</Script>
+          <Script
+            id="2"
             async
             src="https://telegram.org/js/telegram-widget.js?22"
             data-telegram-login="Tsnake_fun_bot"
             data-size="large"
             data-onauth="onTelegramAuth(user)"
             data-request-access="write"
-          ></script>
+          ></Script>
         </div>
+        {/* <div ref={telegramWrapperRef} id="telegramWrapperRef"></div> */}
       </div>
     </main>
   );
