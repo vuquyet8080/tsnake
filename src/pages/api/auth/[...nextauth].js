@@ -21,6 +21,7 @@ export const authOptions = {
 
 export default NextAuth({
   ...authOptions,
+  secret: process.env.NEXT_PUBLIC_SECRET,
   callbacks: {
     async signIn({ user, account, profile, email, credentials }) {
       console.log(

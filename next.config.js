@@ -7,6 +7,7 @@ const nextConfig = {
       process.env.NEXT_PUBLIC_TWITTER_CONSUMER_KEY,
     NEXT_PUBLIC_TWITTER_CONSUMER_SECRET:
       process.env.NEXT_PUBLIC_TWITTER_CONSUMER_SECRET,
+    NEXT_PUBLIC_SECRET: process.env.NEXT_PUBLIC_SECRET,
   },
   images: {
     remotePatterns: [

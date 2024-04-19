@@ -44,7 +44,6 @@ export default function TaskQuests({ quest }) {
               type: quest?.type,
             });
           }}
-          // variant="outlined"
         />
         <TaskButton variant="outlined" title={"Verify"} action={() => {}} />
       </AccordionBody>
