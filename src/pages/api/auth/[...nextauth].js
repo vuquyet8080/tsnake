@@ -11,8 +11,8 @@ export const authOptions = {
     //   clientSecret: process.env.GITHUB_SECRET,
     // }),
     TwitterProviders({
-      clientId: process.env.NEXT_PUBLIC_TWITTER_CONSUMER_KEY,
-      clientSecret: process.env.NEXT_PUBLIC_TWITTER_CONSUMER_SECRET,
+      clientId: process.env.TWITTER_CLIENT_TOKEN,
+      clientSecret: process.env.TWITTER_CLIENT_TOKEN_SECRET,
     }),
 
     // ...add more providers here
@@ -21,7 +21,7 @@ export const authOptions = {
 
 export default NextAuth({
   ...authOptions,
-  secret: process.env.NEXT_PUBLIC_SECRET,
+  secret: process.env.PUBLIC_SECRET,
   callbacks: {
     async signIn({ user, account, profile, email, credentials }) {
       console.log(

@@ -1,4 +1,4 @@
-import { getProviders } from "next-auth/react";
+import { getProviders, signIn } from "next-auth/react";
 import { Inter } from "next/font/google";
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -9,7 +9,6 @@ export default function Home() {
   const [listProviders, setProviders] = useState([]);
   const fetchProviders = async () => {
     const providers = await getProviders();
-    console.log("providers", providers);
     setProviders(providers);
   };
   useEffect(() => {
@@ -30,14 +29,21 @@ export default function Home() {
       <button onClick={test}>xxx</button>
 
       <h1 className="text-3xl font-bold underline">Hello world!</h1>
-      <div className="font-mono z-10 w-full max-w-5xl items-center justify-between text-sm lg:flex">
-        <p className="from-zinc-200 dark:border-neutral-800 dark:bg-zinc-800/30 lg:dark:bg-zinc-800/30 fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b pb-6 pt-8 backdrop-blur-2xl dark:from-inherit lg:static lg:w-auto lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4">
+      <div className="z-10 items-center justify-between w-full max-w-5xl font-mono text-sm lg:flex">
+        <p className="fixed top-0 left-0 flex justify-center w-full pt-8 pb-6 border-b border-gray-300 from-zinc-200 dark:border-neutral-800 dark:bg-zinc-800/30 lg:dark:bg-zinc-800/30 bg-gradient-to-b backdrop-blur-2xl dark:from-inherit lg:static lg:w-auto lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4">
           Get started by editing&nbsp;
           <code className="font-mono font-bold">src/pages/index.js</code>
         </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
+        {Object.values(listProviders).map((provider) => (
+          <div key={provider.name}>
+            <button onClick={() => signIn(provider.id)}>
+              Sign in with {provider.name}
+            </button>
+          </div>
+        ))}
+        <div className="fixed bottom-0 left-0 flex items-end justify-center w-full h-48 bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
           <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
+            className="flex gap-2 p-8 pointer-events-none place-items-center lg:pointer-events-auto lg:p-0"
             href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
             target="_blank"
             rel="noopener noreferrer"
@@ -66,10 +72,10 @@ export default function Home() {
         />
       </div>
 
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
+      <div className="grid mb-32 text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
         <a
           href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30 group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100"
+          className="px-5 py-4 transition-colors border border-transparent rounded-lg hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30 group hover:border-gray-300 hover:bg-gray-100"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -86,7 +92,7 @@ export default function Home() {
 
         <a
           href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30 group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100"
+          className="px-5 py-4 transition-colors border border-transparent rounded-lg hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30 group hover:border-gray-300 hover:bg-gray-100"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -103,7 +109,7 @@ export default function Home() {
 
         <a
           href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30 group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100"
+          className="px-5 py-4 transition-colors border border-transparent rounded-lg hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30 group hover:border-gray-300 hover:bg-gray-100"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -120,7 +126,7 @@ export default function Home() {
 
         <a
           href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30 group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100"
+          className="px-5 py-4 transition-colors border border-transparent rounded-lg hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30 group hover:border-gray-300 hover:bg-gray-100"
           target="_blank"
           rel="noopener noreferrer"
         >
