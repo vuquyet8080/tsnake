@@ -53,10 +53,13 @@ export default function Home() {
           Login new tab
         </Button>
         <div>
-          <script type="text/javascript">{`function onTelegramAuth(user) {console.log(user)}`}</script>
+          <script
+            defer
+            type="text/javascript"
+          >{`function onTelegramAuth(user) {console.log(user)}`}</script>
 
           <script
-            async
+            defer
             src="https://telegram.org/js/telegram-widget.js?22"
             data-telegram-login="Tsnake_fun_bot"
             data-size="large"
