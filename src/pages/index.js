@@ -69,17 +69,7 @@ export default function Home() {
             data-request-access="write"
           ></script>
         </div>
-        <div id="test-1">
-          <iframe
-            id="telegram-login-Tsnake_fun_bot"
-            src="https://oauth.telegram.org/embed/Tsnake_fun_bot?origin=https%3A%2F%2Ftsnake.vercel.app&amp;return_to=https%3A%2F%2Ftsnake.vercel.app%2F&amp;size=large&amp;request_access=write"
-            width="238"
-            height="40"
-            frameborder="0"
-            scrolling="no"
-            style="overflow: hidden; color-scheme: light dark; border: none; height: 40px; width: 219px;"
-          ></iframe>
-        </div>
+        <div id="test-1" ref={telegramWrapperRef}></div>
       </div>
     </main>
   );
